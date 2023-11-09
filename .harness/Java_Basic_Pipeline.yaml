@@ -18,22 +18,27 @@ pipeline:
         type: CI
         spec:
           cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Build Java app
+                  identifier: Build_Java_app
+                  spec:
+                    shell: Sh
+                    command: |-
+                      echo "Welcome to Harness CI"
+                      mvn -B package --file pom.xml
+              - step:
+                  type: Plugin
+                  name: docker build
+                  identifier: docker_build
+                  spec:
+                    connectorRef: HarnessDocker
+                    image: plugins/docker
           platform:
             os: Linux
             arch: Amd64
           runtime:
             type: Docker
             spec: {}
-          execution:
-            steps:
-              - step:
-                  type: GitClone
-                  name: GitClone_1
-                  identifier: GitClone_1
-                  spec:
-                    connectorRef: lalitbhadane
-                    repoName: jav-hello-world-with-maven
-                    build:
-                      type: branch
-                      spec:
-                        branch: master
