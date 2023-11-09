@@ -1,0 +1,39 @@
+pipeline:
+  name: Java Basic Pipeline
+  identifier: Java_Basic_Pipeline
+  projectIdentifier: DemoProject
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: lalitbhadane
+        repoName: java-hello-world-with-maven
+        build: <+input>
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Docker
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: GitClone
+                  name: GitClone_1
+                  identifier: GitClone_1
+                  spec:
+                    connectorRef: lalitbhadane
+                    repoName: jav-hello-world-with-maven
+                    build:
+                      type: branch
+                      spec:
+                        branch: master
