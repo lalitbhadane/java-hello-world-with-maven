@@ -26,9 +26,9 @@ pipeline:
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
                     connectorRef: HarnessDocker
-                    repo: test-go
+                    repo: temp
                     tags:
-                      - tagname
+                      - temp
           infrastructure:
             type: VM
             spec:
