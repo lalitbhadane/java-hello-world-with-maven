@@ -21,12 +21,16 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Plugin
-                  name: Plugin_1
-                  identifier: Plugin_1
+                  type: GitClone
+                  name: GitClone_1
+                  identifier: GitClone_1
                   spec:
-                    connectorRef: HarnessUser
-                    image: runner
+                    connectorRef: lalitbhadane
+                    repoName: java-hello-world-with-maven
+                    build:
+                      type: branch
+                      spec:
+                        branch: master
           infrastructure:
             type: VM
             spec:
