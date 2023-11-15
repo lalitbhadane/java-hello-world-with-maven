@@ -1,0 +1,30 @@
+pipeline:
+  name: demo
+  identifier: demo
+  projectIdentifier: DemoProject
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          infrastructure:
+            type: VM
+            spec:
+              type: Pool
+              spec:
+                poolName: ubuntu-ci-pool
+                os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: echo "Welcome to HArness"
