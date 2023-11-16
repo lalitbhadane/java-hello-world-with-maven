@@ -25,13 +25,6 @@ pipeline:
                       type: branch
                       spec:
                         branch: master
-              - step:
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
-                  spec:
-                    shell: Sh
-                    command: docker run -v /runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
           infrastructure:
             type: VM
             spec:
