@@ -4,12 +4,6 @@ pipeline:
   projectIdentifier: DemoProject
   orgIdentifier: default
   tags: {}
-  properties:
-    ci:
-      codebase:
-        connectorRef: lalitbhadane
-        repoName: java-hello-world-with-maven
-        build: <+input>
   stages:
     - stage:
         name: Build
@@ -17,7 +11,7 @@ pipeline:
         description: ""
         type: CI
         spec:
-          cloneCodebase: true
+          cloneCodebase: false
           execution:
             steps:
               - step:
@@ -45,3 +39,6 @@ pipeline:
               spec:
                 poolName: ubuntu-ci-pool
                 os: Linux
+          caching:
+            enabled: false
+            paths: []
